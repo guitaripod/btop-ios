@@ -10,13 +10,18 @@ final class ActivityManager {
     private var currentActivity: Activity<SystemMetricsAttributes>?
     private var lastUpdate: Date = .distantPast
     private let throttleInterval: TimeInterval = 0.5
+    private var observationTask: Task<Void, Never>?
 
     private init() {}
 
     func start() {
         guard Settings.shared.liveActivityEnabled else { return }
         guard ActivityAuthorizationInfo().areActivitiesEnabled else { return }
-        guard currentActivity == nil else { return }
+
+        if let existing = currentActivity {
+            if existing.activityState == .active { return }
+            currentActivity = nil
+        }
 
         let attributes = SystemMetricsAttributes(
             compactLeading: Settings.shared.islandLeading,
@@ -35,15 +40,19 @@ final class ActivityManager {
         )
 
         do {
-            currentActivity = try Activity.request(
+            let activity = try Activity.request(
                 attributes: attributes,
                 content: .init(state: initialState, staleDate: nil),
                 pushType: nil
             )
+            currentActivity = activity
+            observeDismissal(activity)
         } catch {}
     }
 
     func stop() {
+        observationTask?.cancel()
+        observationTask = nil
         let activity = currentActivity
         currentActivity = nil
         Task {
@@ -76,6 +85,18 @@ final class ActivityManager {
 
         Task {
             await currentActivity?.update(.init(state: state, staleDate: nil))
+        }
+    }
+
+    private func observeDismissal(_ activity: Activity<SystemMetricsAttributes>) {
+        observationTask?.cancel()
+        observationTask = Task {
+            for await state in activity.activityStateUpdates {
+                if state == .dismissed || state == .ended {
+                    currentActivity = nil
+                    break
+                }
+            }
         }
     }
 }
