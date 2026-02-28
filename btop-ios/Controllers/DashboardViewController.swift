@@ -127,6 +127,7 @@ class DashboardViewController: UIViewController {
         batterySection.update(with: snapshot.battery)
         thermalSection.update(with: snapshot.thermal)
         processSection.update(with: snapshot.process)
+        ActivityManager.shared.update(with: snapshot)
     }
 
     override func didReceiveMemoryWarning() {

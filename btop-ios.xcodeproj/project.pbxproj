@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2C7EDB282F5356EF008CEC6F /* btop-iosWidget.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2C7EDB202F5356EF008CEC6F /* btop-iosWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		2C7EDB162F5356EF008CEC6F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -14,11 +18,33 @@
 			remoteGlobalIDString = 2C7EDAF22F5356EE008CEC6F;
 			remoteInfo = "btop-ios";
 		};
+		2C7EDB292F5356EF008CEC6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C7EDAEB2F5356EE008CEC6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C7EDB262F5356EF008CEC6F;
+			remoteInfo = "btop-iosWidget";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2C7EDB272F5356EF008CEC6F /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2C7EDB282F5356EF008CEC6F /* btop-iosWidget.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2C7EDAF32F5356EE008CEC6F /* btop-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "btop-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C7EDB112F5356EF008CEC6F /* btop-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "btop-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C7EDB202F5356EF008CEC6F /* btop-iosWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "btop-iosWidget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -28,6 +54,13 @@
 				Info.plist,
 			);
 			target = 2C7EDAF22F5356EE008CEC6F /* btop-ios */;
+		};
+		2C7EDB2E2F5356EF008CEC6F /* Exceptions for "btop-iosWidget" folder in "btop-iosWidget" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2C7EDB262F5356EF008CEC6F /* btop-iosWidget */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -43,6 +76,19 @@
 		2C7EDB122F5356EF008CEC6F /* btop-iosUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "btop-iosUITests";
+			sourceTree = "<group>";
+		};
+		2C7EDB212F5356EF008CEC6F /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		2C7EDB222F5356EF008CEC6F /* btop-iosWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				2C7EDB2E2F5356EF008CEC6F /* Exceptions for "btop-iosWidget" folder in "btop-iosWidget" target */,
+			);
+			path = "btop-iosWidget";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -62,6 +108,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2C7EDB242F5356EF008CEC6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -69,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				2C7EDAF52F5356EE008CEC6F /* btop-ios */,
+				2C7EDB212F5356EF008CEC6F /* Shared */,
+				2C7EDB222F5356EF008CEC6F /* btop-iosWidget */,
 				2C7EDB122F5356EF008CEC6F /* btop-iosUITests */,
 				2C7EDAF42F5356EE008CEC6F /* Products */,
 			);
@@ -79,6 +134,7 @@
 			children = (
 				2C7EDAF32F5356EE008CEC6F /* btop-ios.app */,
 				2C7EDB112F5356EF008CEC6F /* btop-iosUITests.xctest */,
+				2C7EDB202F5356EF008CEC6F /* btop-iosWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,13 +149,16 @@
 				2C7EDAEF2F5356EE008CEC6F /* Sources */,
 				2C7EDAF02F5356EE008CEC6F /* Frameworks */,
 				2C7EDAF12F5356EE008CEC6F /* Resources */,
+				2C7EDB272F5356EF008CEC6F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				2C7EDB2A2F5356EF008CEC6F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				2C7EDAF52F5356EE008CEC6F /* btop-ios */,
+				2C7EDB212F5356EF008CEC6F /* Shared */,
 			);
 			name = "btop-ios";
 			packageProductDependencies = (
@@ -129,6 +188,27 @@
 			productReference = 2C7EDB112F5356EF008CEC6F /* btop-iosUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		2C7EDB262F5356EF008CEC6F /* btop-iosWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C7EDB2D2F5356EF008CEC6F /* Build configuration list for PBXNativeTarget "btop-iosWidget" */;
+			buildPhases = (
+				2C7EDB232F5356EF008CEC6F /* Sources */,
+				2C7EDB242F5356EF008CEC6F /* Frameworks */,
+				2C7EDB252F5356EF008CEC6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2C7EDB212F5356EF008CEC6F /* Shared */,
+				2C7EDB222F5356EF008CEC6F /* btop-iosWidget */,
+			);
+			name = "btop-iosWidget";
+			productName = "btop-iosWidget";
+			productReference = 2C7EDB202F5356EF008CEC6F /* btop-iosWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -145,6 +225,9 @@
 					2C7EDB102F5356EF008CEC6F = {
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = 2C7EDAF22F5356EE008CEC6F;
+					};
+					2C7EDB262F5356EF008CEC6F = {
+						CreatedOnToolsVersion = 26.2;
 					};
 				};
 			};
@@ -163,6 +246,7 @@
 			projectRoot = "";
 			targets = (
 				2C7EDAF22F5356EE008CEC6F /* btop-ios */,
+				2C7EDB262F5356EF008CEC6F /* btop-iosWidget */,
 				2C7EDB102F5356EF008CEC6F /* btop-iosUITests */,
 			);
 		};
@@ -177,6 +261,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2C7EDB152F5356EF008CEC6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7EDB252F5356EF008CEC6F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -200,6 +291,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2C7EDB232F5356EF008CEC6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -207,6 +305,11 @@
 			isa = PBXTargetDependency;
 			target = 2C7EDAF22F5356EE008CEC6F /* btop-ios */;
 			targetProxy = 2C7EDB162F5356EF008CEC6F /* PBXContainerItemProxy */;
+		};
+		2C7EDB2A2F5356EF008CEC6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C7EDB262F5356EF008CEC6F /* btop-iosWidget */;
+			targetProxy = 2C7EDB292F5356EF008CEC6F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -434,6 +537,62 @@
 			};
 			name = Release;
 		};
+		2C7EDB2B2F5356EF008CEC6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P4DQK6SRKR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "btop-iosWidget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "btop-iosWidget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.midgarcorp.btop-ios.widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2C7EDB2C2F5356EF008CEC6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P4DQK6SRKR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "btop-iosWidget/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "btop-iosWidget";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.midgarcorp.btop-ios.widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -460,6 +619,15 @@
 			buildConfigurations = (
 				2C7EDB182F5356EF008CEC6F /* Debug */,
 				2C7EDB192F5356EF008CEC6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C7EDB2D2F5356EF008CEC6F /* Build configuration list for PBXNativeTarget "btop-iosWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C7EDB2B2F5356EF008CEC6F /* Debug */,
+				2C7EDB2C2F5356EF008CEC6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.rootContainer = container
 
         UIApplication.shared.isIdleTimerDisabled = Settings.shared.keepScreenOn
+        ActivityManager.shared.start()
         container.dashboard.startPolling()
     }
 
@@ -29,6 +30,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillResignActive(_ scene: UIScene) {
         UIApplication.shared.isIdleTimerDisabled = false
-        rootContainer?.dashboard.stopPolling()
+        if !ActivityManager.shared.isActive {
+            rootContainer?.dashboard.stopPolling()
+        }
+    }
+
+    func sceneDidDisconnect(_ scene: UIScene) {
+        ActivityManager.shared.stop()
     }
 }

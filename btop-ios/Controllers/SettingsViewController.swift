@@ -75,6 +75,12 @@ class SettingsViewController: UIViewController {
             makeSectionToggles(),
         ])
 
+        addSection(title: "LIVE ACTIVITY", accentColor: Theme.cyan, content: [
+            makeLiveActivityToggle(),
+            makeLiveActivityLeadingControl(),
+            makeLiveActivityTrailingControl(),
+        ])
+
         addSection(title: "ABOUT", accentColor: Theme.textSecondary, content: [
             makeAboutRow(),
         ])
@@ -148,6 +154,69 @@ class SettingsViewController: UIViewController {
             }
             container.addArrangedSubview(toggle)
         }
+
+        return container
+    }
+
+    private func makeLiveActivityToggle() -> UIView {
+        let toggle = ToggleRowView(title: "Enabled", isOn: settings.liveActivityEnabled)
+        toggle.onToggle = { [weak self] on in
+            self?.settings.liveActivityEnabled = on
+            if on {
+                ActivityManager.shared.start()
+            } else {
+                ActivityManager.shared.stop()
+            }
+        }
+        return toggle
+    }
+
+    private func makeLiveActivityLeadingControl() -> UIView {
+        let container = UIStackView()
+        container.axis = .vertical
+        container.spacing = 0
+
+        let label = UILabel()
+        label.text = " Island Leading"
+        label.font = Theme.font
+        label.textColor = Theme.textSecondary
+        label.heightAnchor.constraint(equalToConstant: Theme.rowHeight).isActive = true
+        container.addArrangedSubview(label)
+
+        let metrics = SystemMetricsAttributes.CompactMetric.allCases
+        let options = metrics.map { $0.rawValue }
+        let current = metrics.firstIndex(of: settings.islandLeading) ?? 0
+        let seg = SegmentedRowView(options: options, selectedIndex: current)
+        seg.onSelect = { [weak self] idx in
+            self?.settings.islandLeading = metrics[idx]
+            ActivityManager.shared.restart()
+        }
+        container.addArrangedSubview(seg)
+
+        return container
+    }
+
+    private func makeLiveActivityTrailingControl() -> UIView {
+        let container = UIStackView()
+        container.axis = .vertical
+        container.spacing = 0
+
+        let label = UILabel()
+        label.text = " Island Trailing"
+        label.font = Theme.font
+        label.textColor = Theme.textSecondary
+        label.heightAnchor.constraint(equalToConstant: Theme.rowHeight).isActive = true
+        container.addArrangedSubview(label)
+
+        let metrics = SystemMetricsAttributes.CompactMetric.allCases
+        let options = metrics.map { $0.rawValue }
+        let current = metrics.firstIndex(of: settings.islandTrailing) ?? 1
+        let seg = SegmentedRowView(options: options, selectedIndex: current)
+        seg.onSelect = { [weak self] idx in
+            self?.settings.islandTrailing = metrics[idx]
+            ActivityManager.shared.restart()
+        }
+        container.addArrangedSubview(seg)
 
         return container
     }

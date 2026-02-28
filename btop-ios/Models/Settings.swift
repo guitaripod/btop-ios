@@ -1,3 +1,4 @@
+import ActivityKit
 import Foundation
 
 final class Settings {
@@ -78,6 +79,27 @@ final class Settings {
 
     func setSectionVisible(_ section: Section, visible: Bool) {
         defaults.set(visible, forKey: "section.\(section.rawValue)")
+    }
+
+    var liveActivityEnabled: Bool {
+        get { defaults.bool(forKey: "liveActivityEnabled") }
+        set { defaults.set(newValue, forKey: "liveActivityEnabled") }
+    }
+
+    var islandLeading: SystemMetricsAttributes.CompactMetric {
+        get {
+            let raw = defaults.string(forKey: "islandLeading") ?? "CPU"
+            return SystemMetricsAttributes.CompactMetric(rawValue: raw) ?? .cpu
+        }
+        set { defaults.set(newValue.rawValue, forKey: "islandLeading") }
+    }
+
+    var islandTrailing: SystemMetricsAttributes.CompactMetric {
+        get {
+            let raw = defaults.string(forKey: "islandTrailing") ?? "MEM"
+            return SystemMetricsAttributes.CompactMetric(rawValue: raw) ?? .memory
+        }
+        set { defaults.set(newValue.rawValue, forKey: "islandTrailing") }
     }
 
     private init() {}
