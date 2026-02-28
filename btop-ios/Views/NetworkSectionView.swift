@@ -14,6 +14,12 @@ final class NetworkSectionView: UIView {
 
     required init?(coder: NSCoder) { fatalError() }
 
+    func refreshGraphHeight() {
+        for group in interfaceViews.values {
+            group.sparkline.invalidateIntrinsicContentSize()
+        }
+    }
+
     func update(with net: NetworkSnapshot) {
         let newOrder = net.interfaces.map { $0.name }
 

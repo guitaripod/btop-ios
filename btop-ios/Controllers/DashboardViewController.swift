@@ -16,19 +16,52 @@ class DashboardViewController: UIViewController {
 
     private let collector = SystemCollector()
 
+    private lazy var sectionMap: [(Settings.Section, UIView)] = [
+        (.device, deviceSection),
+        (.cpu, cpuSection),
+        (.memory, memorySection),
+        (.storage, storageSection),
+        (.network, networkSection),
+        (.battery, batterySection),
+        (.thermal, thermalSection),
+        (.process, processSection),
+    ]
+
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Theme.background
+        view.accessibilityIdentifier = "dashboardView"
         setupScrollView()
         setupStackView()
         addSections()
+        applySectionVisibility()
     }
 
     func startPolling() {
-        collector.start(interval: 0.1) { [weak self] snapshot in
+        collector.start(interval: Settings.shared.refreshRate.rawValue) { [weak self] snapshot in
             self?.update(with: snapshot)
+        }
+    }
+
+    func applySettings() {
+        collector.stop()
+        collector.start(interval: Settings.shared.refreshRate.rawValue) { [weak self] snapshot in
+            self?.update(with: snapshot)
+        }
+
+        applySectionVisibility()
+
+        cpuSection.refreshGraphHeight()
+        networkSection.refreshGraphHeight()
+
+        UIApplication.shared.isIdleTimerDisabled = Settings.shared.keepScreenOn
+    }
+
+    private func applySectionVisibility() {
+        for (section, sectionView) in sectionMap {
+            sectionView.isHidden = !Settings.shared.isSectionVisible(section)
         }
     }
 

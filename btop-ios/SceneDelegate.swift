@@ -3,7 +3,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    private var dashboard: DashboardViewController?
+    private var rootContainer: RootContainerViewController?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = scene as? UIWindowScene else { return }
@@ -11,24 +11,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         window.overrideUserInterfaceStyle = .dark
 
-        let vc = DashboardViewController()
-        window.rootViewController = vc
+        let container = RootContainerViewController()
+        window.rootViewController = container
         window.makeKeyAndVisible()
 
         self.window = window
-        self.dashboard = vc
+        self.rootContainer = container
 
-        UIApplication.shared.isIdleTimerDisabled = true
-        vc.startPolling()
+        UIApplication.shared.isIdleTimerDisabled = Settings.shared.keepScreenOn
+        container.dashboard.startPolling()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        UIApplication.shared.isIdleTimerDisabled = true
-        dashboard?.startPolling()
+        UIApplication.shared.isIdleTimerDisabled = Settings.shared.keepScreenOn
+        rootContainer?.dashboard.startPolling()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
         UIApplication.shared.isIdleTimerDisabled = false
-        dashboard?.stopPolling()
+        rootContainer?.dashboard.stopPolling()
     }
 }

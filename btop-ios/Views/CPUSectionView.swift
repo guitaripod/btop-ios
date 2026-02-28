@@ -15,6 +15,10 @@ final class CPUSectionView: UIView {
 
     required init?(coder: NSCoder) { fatalError() }
 
+    func refreshGraphHeight() {
+        sparkline.invalidateIntrinsicContentSize()
+    }
+
     func update(with cpu: CPUSnapshot) {
         let color = Theme.color(forPercent: cpu.usagePercent)
         header.setValue(Formatters.percent(cpu.usagePercent), color: color)
