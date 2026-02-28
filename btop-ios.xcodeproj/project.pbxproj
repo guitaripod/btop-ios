@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		2C7EDB162F5356EF008CEC6F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2C7EDAEB2F5356EE008CEC6F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C7EDAF22F5356EE008CEC6F;
+			remoteInfo = "btop-ios";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2C7EDAF32F5356EE008CEC6F /* btop-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "btop-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C7EDB112F5356EF008CEC6F /* btop-iosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "btop-iosUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -29,10 +40,22 @@
 			path = "btop-ios";
 			sourceTree = "<group>";
 		};
+		2C7EDB122F5356EF008CEC6F /* btop-iosUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "btop-iosUITests";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		2C7EDAF02F5356EE008CEC6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7EDB142F5356EF008CEC6F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -46,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				2C7EDAF52F5356EE008CEC6F /* btop-ios */,
+				2C7EDB122F5356EF008CEC6F /* btop-iosUITests */,
 				2C7EDAF42F5356EE008CEC6F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				2C7EDAF32F5356EE008CEC6F /* btop-ios.app */,
+				2C7EDB112F5356EF008CEC6F /* btop-iosUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +108,27 @@
 			productReference = 2C7EDAF32F5356EE008CEC6F /* btop-ios.app */;
 			productType = "com.apple.product-type.application";
 		};
+		2C7EDB102F5356EF008CEC6F /* btop-iosUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2C7EDB1A2F5356EF008CEC6F /* Build configuration list for PBXNativeTarget "btop-iosUITests" */;
+			buildPhases = (
+				2C7EDB132F5356EF008CEC6F /* Sources */,
+				2C7EDB142F5356EF008CEC6F /* Frameworks */,
+				2C7EDB152F5356EF008CEC6F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C7EDB172F5356EF008CEC6F /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				2C7EDB122F5356EF008CEC6F /* btop-iosUITests */,
+			);
+			name = "btop-iosUITests";
+			productName = "btop-iosUITests";
+			productReference = 2C7EDB112F5356EF008CEC6F /* btop-iosUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -95,6 +141,10 @@
 				TargetAttributes = {
 					2C7EDAF22F5356EE008CEC6F = {
 						CreatedOnToolsVersion = 26.2;
+					};
+					2C7EDB102F5356EF008CEC6F = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 2C7EDAF22F5356EE008CEC6F;
 					};
 				};
 			};
@@ -113,12 +163,20 @@
 			projectRoot = "";
 			targets = (
 				2C7EDAF22F5356EE008CEC6F /* btop-ios */,
+				2C7EDB102F5356EF008CEC6F /* btop-iosUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2C7EDAF12F5356EE008CEC6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2C7EDB152F5356EF008CEC6F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -135,7 +193,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2C7EDB132F5356EF008CEC6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2C7EDB172F5356EF008CEC6F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C7EDAF22F5356EE008CEC6F /* btop-ios */;
+			targetProxy = 2C7EDB162F5356EF008CEC6F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		2C7EDB072F5356EF008CEC6F /* Debug */ = {
@@ -321,6 +394,46 @@
 			};
 			name = Release;
 		};
+		2C7EDB182F5356EF008CEC6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P4DQK6SRKR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.midgarcorp.btop-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "btop-ios";
+			};
+			name = Debug;
+		};
+		2C7EDB192F5356EF008CEC6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P4DQK6SRKR;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.midgarcorp.btop-iosUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "btop-ios";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -338,6 +451,15 @@
 			buildConfigurations = (
 				2C7EDB072F5356EF008CEC6F /* Debug */,
 				2C7EDB082F5356EF008CEC6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2C7EDB1A2F5356EF008CEC6F /* Build configuration list for PBXNativeTarget "btop-iosUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C7EDB182F5356EF008CEC6F /* Debug */,
+				2C7EDB192F5356EF008CEC6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
