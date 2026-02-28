@@ -6,15 +6,12 @@ A terminal-aesthetic system monitor for iOS. Real-time CPU, memory, storage, net
   <img src="Screenshots/hero.png" alt="Dashboard and Settings" width="700">
 </p>
 
-## Dynamic Island
+## Live Activities
 
-Live Activities push system metrics to the Dynamic Island and lock screen. Configurable compact view shows any two of: CPU, Memory, Battery, Network throughput, or Thermal state. Long-press expands to show everything.
+System metrics in the Dynamic Island and lock screen. Compact view shows any two of: CPU, Memory, Battery, Network, or Thermal. Long-press expands to show everything.
 
 <p align="center">
-  <img src="Screenshots/dynamic_island_compact.png" alt="Dynamic Island Compact" width="420">
-</p>
-<p align="center">
-  <img src="Screenshots/dynamic_island_expanded.png" alt="Dynamic Island Expanded" width="420">
+  <img src="Screenshots/live_activity.png" alt="Dynamic Island — Compact, Expanded, Lock Screen" width="700">
 </p>
 
 ## Features
