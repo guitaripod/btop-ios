@@ -29,9 +29,13 @@ final class NetworkSectionView: UIView {
             rebuildLayout(interfaces: net.interfaces)
         }
 
+        let primaryName = net.interfaces.first {
+            $0.historyIn.contains { $0 > 0 } || $0.historyOut.contains { $0 > 0 }
+        }?.name
+
         for iface in net.interfaces {
             if let group = interfaceViews[iface.name] {
-                updateGroup(group, with: iface)
+                updateGroup(group, with: iface, isPrimary: iface.name == primaryName)
             }
         }
 
@@ -42,7 +46,7 @@ final class NetworkSectionView: UIView {
         backgroundColor = Theme.sectionBackground
 
         contentStack.axis = .vertical
-        contentStack.spacing = 2
+        contentStack.spacing = 6
 
         let outer = UIStackView(arrangedSubviews: [header, contentStack])
         outer.axis = .vertical
@@ -73,22 +77,16 @@ final class NetworkSectionView: UIView {
                 interfaceViews[iface.name] = group
             }
 
-            contentStack.addArrangedSubview(group.nameLabel)
-            contentStack.addArrangedSubview(group.rateLabel)
-            contentStack.addArrangedSubview(group.totalLabel)
-            contentStack.addArrangedSubview(group.sparkline)
+            contentStack.addArrangedSubview(group.container)
         }
 
         for key in interfaceViews.keys where !interfaces.contains(where: { $0.name == key }) {
             let group = interfaceViews.removeValue(forKey: key)
-            group?.nameLabel.removeFromSuperview()
-            group?.rateLabel.removeFromSuperview()
-            group?.totalLabel.removeFromSuperview()
-            group?.sparkline.removeFromSuperview()
+            group?.container.removeFromSuperview()
         }
     }
 
-    private func updateGroup(_ group: InterfaceRowGroup, with iface: InterfaceSnapshot) {
+    private func updateGroup(_ group: InterfaceRowGroup, with iface: InterfaceSnapshot, isPrimary: Bool) {
         let nameStr = NSMutableAttributedString()
         nameStr.append(str(" \(iface.displayName)", Theme.textPrimary, Theme.fontBold))
         nameStr.append(str(" (\(iface.name))", Theme.textSecondary))
@@ -116,9 +114,9 @@ final class NetworkSectionView: UIView {
             group.totalLabel.attributedText = totalStr
         }
 
-        let hasRecentActivity = iface.historyIn.contains { $0 > 0 } || iface.historyOut.contains { $0 > 0 }
-        group.sparkline.isHidden = !hasRecentActivity
-        if hasRecentActivity {
+        let showSparkline = isPrimary && (iface.historyIn.contains { $0 > 0 } || iface.historyOut.contains { $0 > 0 })
+        group.sparkline.isHidden = !showSparkline
+        if showSparkline {
             group.sparkline.update(series: [
                 SparklineView.Series(data: iface.historyIn, color: Theme.netIn, fillAlpha: 0.2),
                 SparklineView.Series(data: iface.historyOut, color: Theme.netOut, fillAlpha: 0.2),
@@ -130,7 +128,9 @@ final class NetworkSectionView: UIView {
 
     private func ensureEmptyLabel() {
         if emptyLabel == nil {
-            let l = makeLabel()
+            let l = UILabel()
+            l.font = Theme.font
+            l.numberOfLines = 1
             l.attributedText = str(" No active interfaces", Theme.textSecondary)
             emptyLabel = l
         }
@@ -150,13 +150,6 @@ final class NetworkSectionView: UIView {
         }
     }
 
-    private func makeLabel() -> UILabel {
-        let l = UILabel()
-        l.font = Theme.font
-        l.numberOfLines = 1
-        return l
-    }
-
     private func str(_ text: String, _ color: UIColor, _ font: UIFont? = nil) -> NSAttributedString {
         NSAttributedString(string: text, attributes: [
             .foregroundColor: color,
@@ -166,6 +159,7 @@ final class NetworkSectionView: UIView {
 }
 
 private final class InterfaceRowGroup {
+    let container = UIStackView()
     let nameLabel = UILabel()
     let rateLabel = UILabel()
     let totalLabel = UILabel()
@@ -176,5 +170,11 @@ private final class InterfaceRowGroup {
             l.font = Theme.font
             l.numberOfLines = 1
         }
+        container.axis = .vertical
+        container.spacing = 2
+        container.addArrangedSubview(nameLabel)
+        container.addArrangedSubview(rateLabel)
+        container.addArrangedSubview(totalLabel)
+        container.addArrangedSubview(sparkline)
     }
 }
