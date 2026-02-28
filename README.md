@@ -16,9 +16,9 @@ System metrics in the Dynamic Island and lock screen. Compact view shows any two
 
 ## Features
 
-- **Dashboard** — Device info, CPU usage with sparkline history, memory breakdown (active/wired/compressed), storage bar, per-interface network rates with graphs, battery state, thermal state, process self-metrics
-- **Live Activities** — Dynamic Island compact/expanded/minimal views + lock screen widget, 2Hz updates, configurable leading/trailing metrics
-- **Settings** — Refresh rate (1-10Hz), keep screen on, graph height, per-section visibility toggles, Dynamic Island metric selection
+- **Dashboard** — Device info, CPU usage with history graph, memory breakdown (active/wired/compressed/inactive), storage bar, per-interface network rates with graphs, battery state, thermal state, process self-metrics
+- **Live Activities** — Dynamic Island compact/expanded/minimal views + lock screen, 2Hz updates, configurable leading/trailing metrics (CPU, MEM, BAT, NET, THM)
+- **Settings** — Refresh rate (1/2/5/10 Hz), keep screen on, graph height, per-section visibility toggles, Dynamic Island metric selection
 - **Design** — Dark terminal aesthetic, monospaced throughout, green/yellow/red color coding by severity thresholds
 
 ## Requirements
