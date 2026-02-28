@@ -25,6 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         UIApplication.shared.isIdleTimerDisabled = Settings.shared.keepScreenOn
+        ActivityManager.shared.start()
         rootContainer?.dashboard.startPolling()
     }
 
