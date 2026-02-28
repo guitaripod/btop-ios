@@ -31,7 +31,7 @@ enum Theme {
     static let sectionSpacing: CGFloat = 4
     static let padding: CGFloat = 8
     static let rowHeight: CGFloat = 16
-    static let graphHeight: CGFloat = 48
+    static var graphHeight: CGFloat { Settings.shared.graphHeight.rawValue }
     static let barHeight: CGFloat = 12
 
     static func color(forPercent percent: Double) -> UIColor {
